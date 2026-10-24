@@ -48,3 +48,10 @@ If you need to match a literal `]`, place it outside a class.
 Returns an anchored `RegExp`. Pass `{ ignoreCase: true }` for case-insensitive
 matching. Throws `SyntaxError` for an unterminated or otherwise unsupported
 character class.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
